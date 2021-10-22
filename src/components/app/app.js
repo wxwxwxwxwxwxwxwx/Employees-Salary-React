@@ -17,7 +17,7 @@ class App extends Component {
 				{name: 'Osсar V.', salary: 1500, increase: false, star: false, id: 3}
 			]
 		}
-		this.maxId = 3;
+		this.maxId = 4;
 	}
 
 	deleteItem = (id) => {
@@ -28,27 +28,19 @@ class App extends Component {
 		});
 	}
 
-	// addItem = (e) => {
-    //     e.preventDefault();
-	// 	this.setState(({data, name, value}) => {
-	// 		const before = data;
-	// 		const newPerson = [{name: name, value: value}];
-
-	// 		const newArray = [...before, ...newPerson];
-
-	// 		return {
-	// 			data: newArray
-	// 		}
-	// 	});
-    // }
-
-	newItem = (e) => {
-        e.preventDefault();
-		this.setState(({data, name, salary}) => {
-			return {
-				data: data.push({name: name, salary: salary})
-			}
-		});
+    addItem = (name, salary) => {
+        const newItem = {
+            name, 
+            salary,
+            increase: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        });
     }
 
   	render() {
@@ -67,8 +59,7 @@ class App extends Component {
 					onDelete={this.deleteItem}/>
 
 				<EmployeesAddForm
-					data={this.state.data}
-					onAdd={this.newItem}/>
+					onAdd={this.addItem}/>
 			</div>
 		);
   	}
