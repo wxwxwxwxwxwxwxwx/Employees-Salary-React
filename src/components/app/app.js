@@ -28,21 +28,25 @@ class App extends Component {
 		});
 	}
 
-	addItem = (e) => {
+	// addItem = (e) => {
+    //     e.preventDefault();
+	// 	this.setState(({data, name, value}) => {
+	// 		const before = data;
+	// 		const newPerson = [{name: name, value: value}];
+
+	// 		const newArray = [...before, ...newPerson];
+
+	// 		return {
+	// 			data: newArray
+	// 		}
+	// 	});
+    // }
+
+	newItem = (e) => {
         e.preventDefault();
-		this.setState(({data, maxId}) => {
-			const {name, salary} = e.target.value;
-			const newPerson = [
-				{name : name, salary: salary, id: maxId++}
-			]
-
-			const before = data;
-			const after = newPerson;
-
-			const newArray = [...before, ...after];
-
+		this.setState(({data, name, salary}) => {
 			return {
-				data: newArray
+				data: data.push({name: name, salary: salary})
 			}
 		});
     }
@@ -63,7 +67,8 @@ class App extends Component {
 					onDelete={this.deleteItem}/>
 
 				<EmployeesAddForm
-					onAdd={this.addItem}/>
+					data={this.state.data}
+					onAdd={this.newItem}/>
 			</div>
 		);
   	}
