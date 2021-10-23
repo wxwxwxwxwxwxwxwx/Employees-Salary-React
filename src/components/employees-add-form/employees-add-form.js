@@ -18,7 +18,7 @@ class EmployeesAddForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        if (this.state.name < 2 || this.state.salary < 1) return;
+        if (this.state.name < 2 || typeof this.state.name != 'string' || this.state.salary < 1) return;
         this.props.onAdd(this.state.name, this.state.salary);
         this.setState({
             name: '',
@@ -39,6 +39,7 @@ class EmployeesAddForm extends Component {
                         className="form-control new-post-label"
                         placeholder="Как его зовут?" 
                         name='name'
+                        pattern='^[а-яА-ЯеЁa-zA-Z]+$'
                         value={name}
                         onChange={this.onValueChange}/>
                     <input type="number"
