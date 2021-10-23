@@ -12,9 +12,9 @@ class App extends Component {
 		super(props);
 		this.state = {
 			data: [
-				{name: 'Alex C.', salary: 800, increase: false, star: false, id: 1},
-				{name: 'David B', salary: 1000, increase: false, star: false, id: 2},
-				{name: 'Osсar V.', salary: 1500, increase: false, star: false, id: 3}
+				{name: 'Alex C.', salary: 800, increase: false, rise: true, id: 1},
+				{name: 'David B', salary: 1000, increase: false, rise: false, id: 2},
+				{name: 'Osсar V.', salary: 1500, increase: false, rise: false, id: 3}
 			]
 		}
 		this.maxId = 4;
@@ -33,6 +33,7 @@ class App extends Component {
             name, 
             salary,
             increase: false,
+			rise: false,
             id: this.maxId++
         }
         this.setState(({data}) => {
@@ -43,11 +44,27 @@ class App extends Component {
         });
     }
 
+	onToggleIncrease = (id) => {
+		this.setState(({data}) => ({
+			data: data.map(item => {
+				if (item.id === id) {
+					return {...item, increase: !item.increase}
+				}
+				return item;
+			})
+		}));
+	}
+
+	onToggleRise = (id) => {
+		console.log(`Rise this ${id}`);
+	}
+
   	render() {
 
 		return (
 			<div className="app">
-				<AppInfo />
+				<AppInfo 
+					data={this.state.data}/>
 		
 				<div className="search-panel">
 					<SearchPanel/>
@@ -56,7 +73,9 @@ class App extends Component {
 				
 				<EmployeesList 
 					data={this.state.data}
-					onDelete={this.deleteItem}/>
+					onDelete={this.deleteItem}
+					onToggleIncrease={this.onToggleIncrease}
+					onToggleRise={this.onToggleRise}/>
 
 				<EmployeesAddForm
 					onAdd={this.addItem}/>
