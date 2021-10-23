@@ -13,7 +13,7 @@ class App extends Component {
 		this.state = {
 			data: [
 				{name: 'Alex C.', salary: 800, increase: false, rise: true, id: 1},
-				{name: 'David B', salary: 1000, increase: false, rise: false, id: 2},
+				{name: 'David B', salary: 1000, increase: true, rise: false, id: 2},
 				{name: 'Osсar V.', salary: 1500, increase: false, rise: false, id: 3}
 			]
 		}
