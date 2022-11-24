@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import AppInfo from '../app-info/app-info';
 import SearchPanel from '../search-panel/search-panel';
 import AppFilter from '../app-filter/app-filter';
@@ -12,14 +13,13 @@ class App extends Component {
 		super(props);
 		this.state = {
 			data: [
-				{name: 'Alex C.', salary: 800, increase: false, rise: true, id: 1},
-				{name: 'David B', salary: 1000, increase: true, rise: false, id: 2},
-				{name: 'Oscar V.', salary: 1500, increase: false, rise: false, id: 3}
+				{name: 'Alex C.', salary: 800, increase: false, rise: true, id: uuidv4()},
+				{name: 'David B', salary: 1000, increase: true, rise: false, id: uuidv4()},
+				{name: 'Oscar V.', salary: 1500, increase: false, rise: false, id: uuidv4()}
 			],
 			term: '',
 			filter: 'all'
 		}
-		this.maxId = 4;
 	}
 
 	deleteItem = (id) => {
@@ -36,7 +36,7 @@ class App extends Component {
             salary,
             increase: false,
 			rise: false,
-            id: this.maxId++
+            id: uuidv4()
         }
         this.setState(({data}) => {
             const newArr = [...data, newItem];

@@ -10,10 +10,35 @@
 .add-form {
     margin-top: 20px;
     input {
-        width: 350px;
+        width: 33%;
         margin-right: 20px;
         &:invalid {
             border: 1px solid red;
+        }
+    }
+    button {
+        width: 33%;
+    }
+}
+
+@media (max-width: 575px) {
+    .app-add-form {
+        margin-top: 15px;
+        h3 {
+            font-size: 18px;
+        }
+    }
+    .add-form {
+        margin-top: 15px;
+        flex-direction: column;
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        button {
+            font-size: 14px;
+            width: 100%;
         }
     }
 }

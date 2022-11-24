@@ -8,9 +8,9 @@
         line-height: 35px;
         font-size: 20px;
         cursor: pointer;
-        min-width: 550px;
     }
     input {
+        width: 100px;
         outline: none;
         line-height: 35px;
         font-size: 20px;
@@ -53,4 +53,20 @@
 .like .fa-star {
     opacity: 1;
     transform: translateX(0px);
+}
+
+@media (max-width: 575px) {
+    .list-group-item {
+        padding: 15px 15px;
+        align-items: center;
+        span, input {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: 475px) {
+    .list-group-item {
+        flex-direction: column;
+    }
 }
