@@ -42,15 +42,15 @@
         transform: translateX(30px);
         opacity: 0;
     }
-    .like .fa-star {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-    .increase .list-group-item-label, .list-group-item.increase .list-group-item-input {
-        color: #e09f3e;
-    }
-    .increase .btn-star {
-        color: #aeaeae;
-    }
 }
-  
+ 
+.increase .list-group-item-label, .list-group-item.increase .list-group-item-input {
+    color: #e09f3e;
+}
+.increase .btn-star {
+    color: #aeaeae;
+}
+.like .fa-star {
+    opacity: 1;
+    transform: translateX(0px);
+}
